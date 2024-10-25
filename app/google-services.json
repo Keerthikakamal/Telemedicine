@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "259010555733",
+    "project_id": "telemedicine-e2821",
+    "storage_bucket": "telemedicine-e2821.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259010555733:android:b57cd9e24a423ab11489dc",
+        "android_client_info": {
+          "package_name": "com.yessr.telemedicine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa5m6CO7-6ETMecyWcUWIE_gbVcwqxuVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
