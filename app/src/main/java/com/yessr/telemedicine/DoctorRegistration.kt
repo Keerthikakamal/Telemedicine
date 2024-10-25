@@ -56,8 +56,7 @@ class DoctorRegistration : AppCompatActivity() {
             registerDoctor(name, profession, location, phoneNumber, fromTime, toTime)
         }
     }
-
-    // Function to register doctor and save data in Firebase
+    
     private fun registerDoctor(name: String, profession: String, location: String, phoneNumber: String, fromTime: String, toTime: String) {
         // Create a map for doctor details
         val doctorMap = hashMapOf(
