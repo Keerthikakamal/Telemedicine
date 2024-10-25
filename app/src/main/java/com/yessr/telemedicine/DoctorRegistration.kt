@@ -31,6 +31,11 @@ class DoctorRegistration : AppCompatActivity() {
             showTimePickerDialog(binding.etToTime)
         }
 
+        binding.txtLogin.setOnClickListener {
+            val intent = Intent(this, DoctorLogin::class.java)
+            startActivity(intent)
+        }
+
         // Handle form submission
         binding.btnDoctorSubmit.setOnClickListener {
 
@@ -53,17 +58,18 @@ class DoctorRegistration : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            registerDoctor(name, profession, location, phoneNumber, fromTime, toTime)
+            registerDoctor(name, profession, location, phoneNumber, password, fromTime, toTime)
         }
     }
-    
-    private fun registerDoctor(name: String, profession: String, location: String, phoneNumber: String, fromTime: String, toTime: String) {
+
+    private fun registerDoctor(name: String, profession: String, location: String, phoneNumber: String, password: String, fromTime: String, toTime: String) {
         // Create a map for doctor details
         val doctorMap = hashMapOf(
             "name" to name,
             "profession" to profession,
             "location" to location,
             "phoneNumber" to phoneNumber,
+            "password" to password,
             "fromTime" to fromTime,
             "toTime" to toTime,
             "type" to "doctor"
@@ -76,15 +82,7 @@ class DoctorRegistration : AppCompatActivity() {
                 // Show success message and navigate to DoctorHome activity
                 Toast.makeText(this, "Doctor registered successfully", Toast.LENGTH_SHORT).show()
 
-                // Pass data to the next activity
                 val intent = Intent(this, DoctorHome::class.java)
-                intent.putExtra("NAME", name)
-                intent.putExtra("PROFESSION", profession)
-                intent.putExtra("LOCATION", location)
-                intent.putExtra("PHONE_NUMBER", phoneNumber)
-                intent.putExtra("FROM_TIME", fromTime)
-                intent.putExtra("TO_TIME", toTime)
-
                 startActivity(intent)
             }
             .addOnFailureListener { e ->

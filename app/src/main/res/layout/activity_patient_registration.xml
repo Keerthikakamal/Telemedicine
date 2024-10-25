@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="40dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".PatientRegistration">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Patient Registration"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etPatientName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Full Name"
+            android:textColor="#000000"
+            android:textColorHint="#808080" />
+
+        <EditText
+            android:id="@+id/etPatientLocation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Location"
+            android:textColor="#000000"
+            android:textColorHint="#808080" />
+
+        <EditText
+            android:id="@+id/etPatientPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Phone Number"
+            android:textColor="#000000"
+            android:textColorHint="#808080" />
+
+        <EditText
+            android:id="@+id/etPatientPassword"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textColorHint="#808080" />
+
+        <Button
+            android:id="@+id/btnPatientSubmit"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Submit" />
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:text="Already registered? Login" />
+    </LinearLayout>
+</ScrollView>

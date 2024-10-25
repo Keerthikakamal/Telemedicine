@@ -3,6 +3,7 @@ package com.yessr.telemedicine
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.FirebaseApp
 import com.yessr.telemedicine.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        FirebaseApp.initializeApp(this)
 
         binding.btnDoctor.setOnClickListener {
             val intent = Intent(this, DoctorRegistration::class.java)
@@ -26,7 +28,8 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnPatient.setOnClickListener {
-
+            val intent = Intent(this, PatientRegistration::class.java)
+            startActivity(intent)
         }
     }
 }
