@@ -52,7 +52,9 @@ class PatientRegistration : AppCompatActivity() {
             .add(patientData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Patient registered successfully", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, PatientHome::class.java))
+                val intent = Intent(this, PatientHome::class.java)
+                intent.putExtra("PATIENT_PHONE_NUMBER", phoneNumber)
+                startActivity(intent)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to register: ${e.message}", Toast.LENGTH_SHORT).show()

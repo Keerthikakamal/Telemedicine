@@ -51,6 +51,7 @@ class PatientLogin : AppCompatActivity() {
                 if (!documents.isEmpty) {
                     // Login successful
                     val intent = Intent(this, PatientHome::class.java)
+                    intent.putExtra("PATIENT_PHONE_NUMBER", phoneNumber)
 
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
                     startActivity(intent)

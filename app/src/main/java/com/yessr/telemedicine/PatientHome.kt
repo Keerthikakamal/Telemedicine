@@ -13,14 +13,15 @@ class PatientHome : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val doctors = mutableListOf<Doctor>()
     private lateinit var doctorAdapter: DoctorAdapter
-    private val patientId = "some_patient_id" // Replace with actual patient ID, or pass from intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPatientHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        doctorAdapter = DoctorAdapter(this, doctors, patientId)
+        val patientMobileNumber = intent.getStringExtra("PATIENT_PHONE_NUMBER") ?: ""
+
+        doctorAdapter = DoctorAdapter(this, doctors, patientMobileNumber)
         binding.recyclerViewDoctors.apply {
             layoutManager = LinearLayoutManager(this@PatientHome)
             adapter = doctorAdapter

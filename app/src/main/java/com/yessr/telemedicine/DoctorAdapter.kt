@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yessr.telemedicine.databinding.ListItemDoctorBinding
 
-class DoctorAdapter(private val context: Context, private val doctors: List<Doctor>, private val patientId: String) :
+class DoctorAdapter(private val context: Context, private val doctors: List<Doctor>, private val patientMobileNumber: String) :
     RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
@@ -30,7 +30,7 @@ class DoctorAdapter(private val context: Context, private val doctors: List<Doct
             tvDoctorName.text = doctor.name
             tvDoctorProfession.text = doctor.profession
             tvDoctorLocation.text = doctor.location
-            tvDoctorAvailability.text = "${doctor.fromTime} - ${doctor.toTime}"
+            tvDoctorAvailability.text = "From ${doctor.fromTime} - To ${doctor.toTime}"
 
             btnBookAppointment.setOnClickListener {
                 bookAppointment(doctor)
@@ -40,8 +40,8 @@ class DoctorAdapter(private val context: Context, private val doctors: List<Doct
 
     private fun bookAppointment(doctor: Doctor) {
         val appointment = hashMapOf(
-            "doctorId" to doctor.phoneNumber, // Assuming phone number is unique for doctors
-            "patientId" to patientId,
+            "doctorId" to doctor.phoneNumber,
+            "patientMobileNumber" to patientMobileNumber,
             "doctorName" to doctor.name,
             "appointmentTime" to "${doctor.fromTime} - ${doctor.toTime}"
         )

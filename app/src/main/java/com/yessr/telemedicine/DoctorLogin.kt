@@ -15,26 +15,22 @@ class DoctorLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflate the layout
         binding = ActivityDoctorLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Login button click handler
+
         binding.btnDoctorSubmit.setOnClickListener {
             val phoneNumber = binding.etDoctorPhoneNumber.text.trim().toString()
             val password = binding.etDoctorPassword.text.trim().toString()
 
-            // Validate input fields
             if (phoneNumber.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Call login function
             loginDoctor(phoneNumber, password)
         }
 
-        // Handle 'Register' click to navigate to Doctor Registration
         binding.txtRegister.setOnClickListener {
             val intent = Intent(this, DoctorRegistration::class.java)
             startActivity(intent)
@@ -42,7 +38,6 @@ class DoctorLogin : AppCompatActivity() {
     }
 
     private fun loginDoctor(phoneNumber: String, password: String) {
-        // Query Firestore for the doctor with the entered phone number
         db.collection("doctors")
             .whereEqualTo("phoneNumber", phoneNumber)
             .whereEqualTo("password", password)
@@ -51,7 +46,7 @@ class DoctorLogin : AppCompatActivity() {
                 if (!documents.isEmpty) {
                     // Login successful
                     val intent = Intent(this, DoctorHome::class.java)
-
+                    intent.putExtra("PHONE_NUMBER", phoneNumber)
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                 } else {

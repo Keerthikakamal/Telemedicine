@@ -23,6 +23,13 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginBottom="8dp"/>
+    <Button
+        android:id="@+id/btnViewAppointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Appointments"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/patientRecyclerView"

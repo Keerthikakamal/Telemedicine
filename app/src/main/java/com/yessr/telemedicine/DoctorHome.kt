@@ -1,6 +1,7 @@
 package com.yessr.telemedicine
 
 import Patient
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +21,21 @@ class DoctorHome : AppCompatActivity() {
         setContentView(binding.root)
 
         patientAdapter = PatientAdapter(patients)
+
+        val phoneNumber = intent.getStringExtra("PHONE_NUMBER")
+
         binding.patientRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@DoctorHome)
             adapter = patientAdapter
         }
 
         loadPatients()
+
+        binding.btnViewAppointments.setOnClickListener {
+            val intent = Intent(this, DoctorAppointments::class.java)
+            intent.putExtra("doctorId", phoneNumber)
+            startActivity(intent)
+        }
     }
 
     private fun loadPatients() {

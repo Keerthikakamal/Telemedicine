@@ -63,7 +63,6 @@ class DoctorRegistration : AppCompatActivity() {
     }
 
     private fun registerDoctor(name: String, profession: String, location: String, phoneNumber: String, password: String, fromTime: String, toTime: String) {
-        // Create a map for doctor details
         val doctorMap = hashMapOf(
             "name" to name,
             "profession" to profession,
@@ -75,14 +74,13 @@ class DoctorRegistration : AppCompatActivity() {
             "type" to "doctor"
         )
 
-        // Save data in the "doctors" collection, auto-generating the document ID
         db.collection("doctors")
             .add(doctorMap)
             .addOnSuccessListener {
-                // Show success message and navigate to DoctorHome activity
                 Toast.makeText(this, "Doctor registered successfully", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, DoctorHome::class.java)
+                intent.putExtra("PHONE_NUMBER", phoneNumber)
                 startActivity(intent)
             }
             .addOnFailureListener { e ->
@@ -91,7 +89,6 @@ class DoctorRegistration : AppCompatActivity() {
             }
     }
 
-    // Function to show time picker dialog
     private fun showTimePickerDialog(editText: EditText) {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
